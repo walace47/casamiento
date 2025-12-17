@@ -1,0 +1,853 @@
+/* Estilos personalizados para la invitación de casamiento */
+
+/* Hero Section */
+.hero-section {
+    background: #ffffff;
+    min-height: 60vh;
+    position: relative;
+    overflow: hidden;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/img/cabecera3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Overlay sutil para mejorar legibilidad del texto sobre la imagen */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-family: 'Optima', 'Optima-Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+    color: #000000;
+}
+
+.hero-content h2 {
+    font-family: 'Optima', 'Optima-Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    color: #000000;
+}
+
+.hero-content p {
+    color: #000000;
+}
+
+.date-info {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #000000;
+}
+
+/* Countdown Section - Contador con fondo verde */
+.countdown-section {
+    background: linear-gradient(135deg, #a8c4b0 0%, #6D8879 100%);
+    position: relative;
+    padding: 50px 20px 80px 20px;
+    margin-top: 0;
+    border-radius: 0 0 40px 40px;
+}
+
+.countdown-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .countdown-section {
+        padding: 40px 15px 60px 15px;
+        border-radius: 0 0 30px 30px;
+    }
+}
+
+/* Detail Cards */
+.detail-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.detail-card i {
+    color: #6D8879;
+}
+
+.detail-card h5 {
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.detail-card p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Estilos específicos para la tarjeta del lugar */
+.location-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.location-icon {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.entertainment-icon {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.menu-icon {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.schedule-icon {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.schedule-clock-icon {
+    font-size: 45px;
+    padding-top: 30px;
+    color: #6D8879;
+    display: block;
+    text-align: center;
+    line-height: 1;
+}
+
+.location-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(109, 136, 121, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.location-card:hover::before {
+    left: 100%;
+}
+
+.location-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(109, 136, 121, 0.2);
+}
+
+.location-card small {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.location-card:hover small {
+    opacity: 1;
+}
+
+.location-card .fa-external-link-alt {
+    transition: transform 0.3s ease;
+}
+
+.location-card:hover .fa-external-link-alt {
+    transform: translateX(3px) translateY(-3px);
+}
+
+/* Estilos para los botones de la tarjeta del lugar */
+.location-card .btn {
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+}
+
+.location-card .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.location-card .btn-outline-primary:hover {
+    background-color: #6D8879;
+    border-color: #6D8879;
+}
+
+.location-card .btn-outline-success:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* RSVP Section */
+.rsvp-buttons .btn {
+    transition: all 0.3s ease;
+    border-radius: 25px;
+    padding: 12px 30px;
+}
+
+.rsvp-buttons .btn-success {
+    background-color: #6D8879;
+    border-color: #6D8879;
+    color: #ffffff;
+}
+
+.rsvp-buttons .btn-success:hover {
+    background-color: #5a7266;
+    border-color: #5a7266;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.rsvp-buttons .btn:hover {
+    transform: scale(1.05);
+}
+
+/* Personalización del botón principal */
+.btn-outline-light {
+    border-color: #ffffff;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #6D8879;
+}
+
+/* Photos Section */
+.photos-section {
+    background: #f8f9fa;
+    position: relative;
+}
+
+.photos-section::before {
+    content: '♥ ♥ ♥';
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 1.5rem;
+    color: rgba(109, 136, 121, 0.15);
+    z-index: 1;
+    letter-spacing: 10px;
+}
+
+.photos-section::after {
+    content: '♥ ♥ ♥';
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    font-size: 1.2rem;
+    color: rgba(109, 136, 121, 0.12);
+    z-index: 1;
+    letter-spacing: 8px;
+}
+
+/* Carousel Styles */
+#photosCarousel {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.carousel-photo {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.carousel-photo img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+}
+
+.carousel-caption h5 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.carousel-caption p {
+    color: #f0f0f0;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.carousel-indicators {
+    bottom: 10px;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(109, 136, 121, 0.5);
+    border: 2px solid rgba(109, 136, 121, 0.8);
+    margin: 0 5px;
+}
+
+.carousel-indicators button.active {
+    background-color: #6D8879;
+    border-color: #6D8879;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(109, 136, 121, 0.8);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(109, 136, 121, 1);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 25px;
+    height: 25px;
+}
+
+/* Responsive para carousel */
+@media (max-width: 768px) {
+    .carousel-photo {
+        height: 300px;
+    }
+
+    .carousel-caption {
+        padding: 15px;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+    }
+
+    .carousel-caption h5 {
+        font-size: 1.2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+    }
+}
+
+.photo-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(109, 136, 121, 0.3);
+}
+
+.photo-placeholder {
+    height: 200px;
+    background: linear-gradient(135deg, #a8c4b0 0%, #6D8879 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #2c2c2c;
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-placeholder::after {
+    content: '♥';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.2rem;
+    color: rgba(109, 136, 121, 0.3);
+    z-index: 1;
+}
+
+.photo-placeholder::before {
+    content: '♥';
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    font-size: 1rem;
+    color: rgba(109, 136, 121, 0.25);
+    z-index: 1;
+}
+
+.photo-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.photo-card:hover .photo-placeholder::before {
+    left: 100%;
+}
+
+.photo-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #6D8879;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.photo-placeholder p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.photo-caption {
+    padding: 20px;
+    text-align: center;
+}
+
+.photo-caption h5 {
+    color: #2c2c2c;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.photo-caption p {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive para fotos */
+@media (max-width: 768px) {
+    .photo-placeholder {
+        height: 150px;
+    }
+
+    .photo-placeholder i {
+        font-size: 2.5rem;
+    }
+
+    .photo-caption {
+        padding: 15px;
+    }
+}
+
+/* Modal de fotos */
+.photo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-modal-content {
+    background: white;
+    border-radius: 15px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+    position: relative;
+}
+
+.photo-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #666;
+    cursor: pointer;
+    z-index: 1001;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.photo-modal-close:hover {
+    color: #6D8879;
+    background: white;
+    transform: scale(1.1);
+}
+
+.photo-modal-image {
+    max-height: 70vh;
+    overflow: hidden;
+}
+
+.photo-placeholder-large {
+    height: 400px;
+    background: linear-gradient(135deg, #a8c4b0 0%, #6D8879 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #2c2c2c;
+    position: relative;
+}
+
+.photo-placeholder-large::after {
+    content: '♥';
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: rgba(109, 136, 121, 0.3);
+    z-index: 1;
+}
+
+.photo-placeholder-large::before {
+    content: '♥';
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    font-size: 1.8rem;
+    color: rgba(109, 136, 121, 0.25);
+    z-index: 1;
+}
+
+.photo-placeholder-large i {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    color: #6D8879;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.photo-placeholder-large p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.photo-modal-caption {
+    padding: 20px;
+    text-align: center;
+    background: #f8f9fa;
+}
+
+.photo-modal-caption h4 {
+    color: #2c2c2c;
+    margin-bottom: 10px;
+}
+
+.photo-modal-caption p {
+    color: #666;
+    margin: 0;
+}
+
+/* Responsive para modal */
+@media (max-width: 768px) {
+    .photo-modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    .photo-placeholder-large {
+        height: 300px;
+    }
+
+    .photo-placeholder-large i {
+        font-size: 4rem;
+    }
+
+    .photo-placeholder-large p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Contact Info */
+.contact-info {
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contact-info:hover {
+    transform: translateY(-3px);
+}
+
+.contact-info i {
+    color: #6D8879;
+}
+
+.contact-info h5 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    color: #666;
+    margin: 0;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.detail-card, .contact-info {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.detail-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.detail-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.detail-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.detail-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section::before {
+        background-image: url('/assets/img/cabecera-mobile2.jpg');
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .date-info {
+        margin: 15px 0;
+        padding: 15px;
+    }
+
+    .rsvp-buttons .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Estilos específicos para móviles en la tarjeta del lugar */
+    .location-card .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .location-card small {
+        font-size: 0.8rem;
+    }
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Personalización de colores Bootstrap */
+:root {
+    --bs-primary: #6D8879;
+    --bs-success: #28a745;
+    --bs-secondary: #6c757d;
+}
+
+/* Estilos para el mensaje RSVP */
+#rsvp-message {
+    min-height: 60px;
+}
+
+.rsvp-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.rsvp-pending {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* FAQ Section */
+.faq-section {
+    background: linear-gradient(135deg, #a8c4b0 0%, #6D8879 100%);
+}
+
+.faq-title,
+.faq-subtitle {
+    color: #ffffff;
+}
+
+.faq-accordion {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.faq-accordion .accordion-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-accordion .accordion-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq-accordion .accordion-button {
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: none;
+}
+
+.faq-accordion .accordion-button:not(.collapsed) {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.faq-accordion .accordion-button:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.faq-accordion .accordion-button::after {
+    filter: brightness(0) invert(1);
+}
+
+.faq-accordion .accordion-body {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 0 0 15px 15px;
+}
+
+.faq-accordion .accordion-body p {
+    margin: 0;
+    line-height: 1.6;
+}

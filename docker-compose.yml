@@ -1,0 +1,13 @@
+services:
+  invitacion-casamiento:
+    build: .
+    ports:
+      - "80:80"
+    container_name: invitacion-casamiento
+    restart: unless-stopped
+    develop:
+      watch:
+        - action: rebuild
+          path: ./src
+        - action: rebuild # Action for dependency changes
+          path: ./package.json # Watch for changes in package.json

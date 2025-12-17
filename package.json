@@ -1,0 +1,46 @@
+{
+    "name": "invitacion-casamiento",
+    "version": "1.0.0",
+    "description": "Página web elegante para invitación de casamiento",
+    "main": "src/index.html",
+    "scripts": {
+        "start": "bash deploy.sh",
+        "dev": "npx live-server src/ --port=8000 --open=/",
+        "build": "npm run build:css && npm run build:js",
+        "build:css": "npx cssnano src/css/styles.css src/css/styles.min.css",
+        "build:js": "npx terser src/js/script.js -o src/js/script.min.js",
+        "validate": "npx html-validate src/index.html",
+        "lint:css": "npx stylelint src/css/*.css",
+        "lint:js": "npx eslint src/js/*.js",
+        "docker:build": "cd docker && docker-compose build",
+        "docker:up": "cd docker && docker-compose up -d",
+        "docker:down": "cd docker && docker-compose down",
+        "docker:logs": "cd docker && docker-compose logs -f"
+    },
+    "keywords": [
+        "casamiento",
+        "invitacion",
+        "wedding",
+        "html",
+        "css",
+        "javascript",
+        "bootstrap",
+        "responsive"
+    ],
+    "author": "Tu Nombre",
+    "license": "MIT",
+    "devDependencies": {
+        "serve": "^14.2.0",
+        "live-server": "^1.2.2",
+        "cssnano": "^6.0.0",
+        "terser": "^5.19.0",
+        "html-validate": "^8.0.0",
+        "stylelint": "^15.10.0",
+        "eslint": "^8.50.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
+}
