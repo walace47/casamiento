@@ -51,7 +51,8 @@ function showNotification(message) {
 window.openGoogleMaps = function () {
     // Dirección del evento (puedes personalizar estas coordenadas)
     //const address = 'Pellegrini 1415, Plottier, Neuquén, Argentina';
-    const plusCode = "3Q6R+3X Plottier, Neuquén";
+    //Sconst plusCode = "3Q6R+3X Plottier, Neuquén";
+    const plusCode = "3Q6R+3PH Neuquén";
 
     // Opción 1: Buscar por dirección (más flexible)
     const searchUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(plusCode)}`;
@@ -79,8 +80,9 @@ window.openGoogleMaps = function () {
 // Función para abrir Google Maps con la ubicación del evento
 function openGoogleMaps() {
 
-    const plusCode = "3Q6R+3X Plottier, Neuquén";
+    //const plusCode = "3Q6R+3X Plottier, Neuquén";
     // const address = 'Pellegrini 1415, Plottier, Neuquén, Argentina';
+    const plusCode = "3Q6R+3PH Neuquén";
 
     const searchUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(plusCode)}`;
 
@@ -98,8 +100,8 @@ function openGoogleMaps() {
 // Función opcional: Obtener direcciones desde la ubicación del usuario
 function getDirections() {
     const destination = 'Pellegrini 1415, Plottier, Neuquén, Argentina';
-    const plusCode = "3Q6R+3X Plottier, Neuquén";
-
+    //const plusCode = "3Q6R+3X Plottier, Neuquén";
+    const plusCode = "3Q6R+3PH Neuquén";
 
     // Crear URL para obtener direcciones
     const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(plusCode)}`;
@@ -122,7 +124,8 @@ function isMobile() {
 // Función para abrir Google Maps con la app nativa en móviles
 function openGoogleMapsMobile() {
     const address = 'Pellegrini 1415, Plottier, Neuquén, Argentina';
-    const plusCode = "3Q6R+3X Plottier, Neuquén";
+    //const plusCode = "3Q6R+3X Plottier, Neuquén";
+    const plusCode = "3Q6R+3PH Neuquén";
 
     if (isMobile()) {
         // En móviles, intentar abrir la app nativa de Google Maps
@@ -353,32 +356,65 @@ function initGoogleMapsEvents() {
 
 // Función para inicializar los event listeners de las fotos
 function initPhotoEvents() {
-    const photoCards = document.querySelectorAll('.photo-card');
+    // Agregar event listeners a las imágenes del carousel
+    const carouselImages = document.querySelectorAll('#photosCarousel .carousel-photo img');
 
-    photoCards.forEach((card, index) => {
-        card.addEventListener('click', function () {
-            showPhotoModal(index + 1);
+    carouselImages.forEach((img) => {
+        // Hacer que la imagen sea clickeable
+        img.style.cursor = 'pointer';
+
+        img.addEventListener('click', function (e) {
+            e.stopPropagation(); // Evitar que se active el carousel
+            const imgSrc = this.src;
+            const imgAlt = this.alt || 'Foto';
+            showPhotoModal(imgSrc, imgAlt);
         });
     });
+
+    // También mantener compatibilidad con photo-cards si existen
+    const photoCards = document.querySelectorAll('.photo-card');
+    photoCards.forEach((card, index) => {
+        card.addEventListener('click', function () {
+            showPhotoModal(null, `Foto ${index + 1}`, index + 1);
+        });
+    });
+
+    // Agregar event listener a la foto 8
+    const photo8 = document.querySelector('.photo8-full');
+    if (photo8) {
+        photo8.addEventListener('click', function (e) {
+            const imgSrc = this.src;
+            const imgAlt = this.alt || 'Foto 8';
+            showPhotoModal(imgSrc, imgAlt);
+        });
+    }
 }
 
 // Función para mostrar modal de foto
-function showPhotoModal(photoNumber) {
+function showPhotoModal(imgSrc, imgAlt, photoNumber = null) {
     // Crear modal
     const modal = document.createElement('div');
     modal.className = 'photo-modal';
+
+    let imageContent = '';
+    if (imgSrc) {
+        // Mostrar la imagen real
+        imageContent = `<img src="${imgSrc}" class="modal-full-image" />`;
+    } else {
+        // Placeholder si no hay imagen
+        imageContent = `
+            <div class="photo-placeholder-large">
+                <i class="fas fa-heart"></i>
+                <p>Foto ${photoNumber || ''}</p>
+            </div>
+        `;
+    }
+
     modal.innerHTML = `
         <div class="photo-modal-content">
             <span class="photo-modal-close">&times;</span>
             <div class="photo-modal-image">
-                <div class="photo-placeholder-large">
-                    <i class="fas fa-heart"></i>
-                    <p>Foto ${photoNumber}</p>
-                </div>
-            </div>
-            <div class="photo-modal-caption">
-                <h4>Foto ${photoNumber}</h4>
-                <p>Haz clic en cualquier lugar para cerrar</p>
+                ${imageContent}
             </div>
         </div>
     `;
@@ -386,28 +422,56 @@ function showPhotoModal(photoNumber) {
     // Agregar al DOM
     document.body.appendChild(modal);
 
+    // Prevenir scroll del body cuando el modal está abierto
+    document.body.style.overflow = 'hidden';
+
     // Mostrar modal
     setTimeout(() => {
         modal.style.opacity = '1';
     }, 10);
 
     // Event listeners para cerrar
-    modal.addEventListener('click', function () {
-        closePhotoModal(modal);
+    modal.addEventListener('click', function (e) {
+        // Solo cerrar si se hace clic en el fondo del modal (no en el contenido)
+        if (e.target === modal) {
+            closePhotoModal(modal);
+        }
     });
 
+    // Prevenir que el clic en el contenido cierre el modal
+    const modalContent = modal.querySelector('.photo-modal-content');
+    if (modalContent) {
+        modalContent.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
+
     const closeBtn = modal.querySelector('.photo-modal-close');
-    closeBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        closePhotoModal(modal);
-    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            closePhotoModal(modal);
+        });
+    }
+
+    // Cerrar con tecla ESC
+    const handleEscape = function (e) {
+        if (e.key === 'Escape') {
+            closePhotoModal(modal);
+            document.removeEventListener('keydown', handleEscape);
+        }
+    };
+    document.addEventListener('keydown', handleEscape);
 }
 
 // Función para cerrar modal de foto
 function closePhotoModal(modal) {
     modal.style.opacity = '0';
+    document.body.style.overflow = ''; // Restaurar scroll
     setTimeout(() => {
-        document.body.removeChild(modal);
+        if (modal.parentNode) {
+            document.body.removeChild(modal);
+        }
     }, 300);
 }
 

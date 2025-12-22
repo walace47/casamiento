@@ -160,7 +160,7 @@
     object-fit: contain;
 }
 
-.schedule-clock-icon {
+.icon {
     font-size: 45px;
     padding-top: 30px;
     color: #6D8879;
@@ -306,7 +306,7 @@
 
 .carousel-photo {
     position: relative;
-    height: 400px;
+    height: 550px;
     overflow: hidden;
 }
 
@@ -382,7 +382,7 @@
 /* Responsive para carousel */
 @media (max-width: 768px) {
     .carousel-photo {
-        height: 300px;
+        height: 400px;
     }
 
     .carousel-caption {
@@ -532,12 +532,14 @@
 }
 
 .photo-modal-content {
-    background: white;
+    background: transparent;
     border-radius: 15px;
-    max-width: 90%;
-    max-height: 90%;
-    overflow: hidden;
+    max-width: 95%;
+    max-height: 95%;
+    overflow: visible;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .photo-modal-close {
@@ -565,8 +567,23 @@
 }
 
 .photo-modal-image {
-    max-height: 70vh;
+    max-height: 85vh;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.modal-full-image {
+    max-width: 100%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 10px;
 }
 
 .photo-placeholder-large {
@@ -615,9 +632,11 @@
 }
 
 .photo-modal-caption {
-    padding: 20px;
+    padding: 15px 20px;
     text-align: center;
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 0 0 15px 15px;
+    margin-top: 10px;
 }
 
 .photo-modal-caption h4 {
@@ -633,8 +652,16 @@
 /* Responsive para modal */
 @media (max-width: 768px) {
     .photo-modal-content {
-        max-width: 95%;
-        max-height: 95%;
+        max-width: 98%;
+        max-height: 98%;
+    }
+
+    .photo-modal-image {
+        max-height: 80vh;
+    }
+
+    .modal-full-image {
+        max-height: 80vh;
     }
 
     .photo-placeholder-large {
@@ -647,6 +674,14 @@
 
     .photo-placeholder-large p {
         font-size: 1.2rem;
+    }
+
+    .photo-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
     }
 }
 
@@ -850,4 +885,43 @@ html {
 .faq-accordion .accordion-body p {
     margin: 0;
     line-height: 1.6;
+}
+
+/* Photo 8 Section */
+.photo8-section {
+    background: #f8f9fa;
+    position: relative;
+}
+
+.photo8-container {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo8-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.photo8-full {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.photo8-full:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive para Photo 8 */
+@media (max-width: 768px) {
+    .photo8-container {
+        border-radius: 10px;
+    }
 }
