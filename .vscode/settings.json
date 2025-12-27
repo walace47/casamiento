@@ -1,0 +1,30 @@
+{
+  "files.associations": {
+    "*.html": "html",
+    "*.css": "css",
+    "*.js": "javascript"
+  },
+  "emmet.includeLanguages": {
+    "html": "html"
+  },
+  "liveServer.settings.root": "/src",
+  "liveServer.settings.port": 8000,
+  "liveServer.settings.open": "/",
+  "css.validate": true,
+  "javascript.validate.enable": true,
+  "html.validate.scripts": true,
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": false
+  }
+}

@@ -35,6 +35,7 @@ casamiento2/
 - ✅ **Sistema RSVP**: Confirmación de asistencia interactiva
 - 🔒 **Seguridad**: Headers de seguridad y buenas prácticas
 - 🚀 **Fácil Despliegue**: Docker y scripts automatizados
+- 🔄 **Cache Busting**: Sistema automático de versionado para evitar cache
 
 ## 🚀 Inicio Rápido
 
@@ -45,22 +46,50 @@ casamiento2/
 git clone <tu-repositorio>
 cd casamiento2
 
+# Instalar dependencias
+npm install
+
 # Servir archivos estáticos (opcional)
 python3 -m http.server 8000
 # O
 npx serve src/
 ```
 
-### Despliegue con Docker
+### Build con Versionado (Cache Busting)
 
 ```bash
-# Despliegue automático
+# Hacer build con versionado automático
+npm run build
+
+# Ver versión actual
+npm run version
+```
+
+El build genera:
+
+- `dist/` - Archivos versionados listos para producción
+- Archivos CSS/JS con hash único para evitar problemas de cache
+
+### Despliegue
+
+```bash
+# Despliegue automático (Docker por defecto)
 ./deploy.sh
 
-# O manualmente
-cd docker
+# Desplegar a Vercel
+./deploy.sh vercel
+
+# Desplegar a Netlify
+./deploy.sh netlify
+
+# Desplegar a GitHub Pages
+./deploy.sh github
+
+# O manualmente con Docker
 docker-compose up -d --build
 ```
+
+Ver `docs/DEPLOY.md` para más opciones de despliegue.
 
 ## 🎨 Personalización
 
@@ -112,17 +141,36 @@ Ver `docs/DOCKER_README.md` para detalles completos.
 
 ## 🌐 Despliegue
 
-### Opciones Gratuitas
+### 🔄 Sistema de Versionado (Cache Busting)
 
-- **GitHub Pages**: Ideal para proyectos personales
-- **Netlify**: Despliegue automático desde Git
-- **Vercel**: Plataforma moderna para sitios estáticos
+El proyecto incluye un sistema automático de versionado que:
 
-### Opciones de Producción
+- ✅ Genera hashes únicos para CSS y JS basados en el contenido
+- ✅ Actualiza automáticamente las referencias en HTML
+- ✅ Configura Nginx para cache inteligente
+- ✅ Evita problemas de cache en navegadores y CDNs
 
-- **VPS con Docker**: Control total y personalización
-- **AWS S3 + CloudFront**: Escalable y económico
+**Uso:**
+
+```bash
+npm run build  # Genera archivos versionados en dist/
+```
+
+### Opciones de Despliegue
+
+**Gratuitas:**
+
+- **Vercel** ⭐ (Recomendado): Gratis, CDN global, SSL automático
+- **Netlify**: Similar a Vercel, muy fácil de usar
+- **GitHub Pages**: Gratis, integrado con GitHub
+
+**Producción:**
+
+- **Docker + VPS**: Control total ($5-10/mes)
+- **AWS S3 + CloudFront**: Escalable ($1-5/mes)
 - **Servicios de hosting**: Hostinger, GoDaddy, etc.
+
+Ver `docs/DEPLOY.md` para guía completa de despliegue.
 
 ## 🔧 Desarrollo
 
@@ -152,7 +200,8 @@ npx terser src/js/script.js -o src/js/script.min.js
 
 - **`docs/README.md`**: Guía completa de uso y personalización
 - **`docs/DOCKER_README.md`**: Despliegue con Docker
-- **`docker/nginx.conf`**: Configuración de Nginx
+- **`docs/DEPLOY.md`**: Guía completa de despliegue y opciones
+- **`conf/nginx.conf`**: Configuración de Nginx con cache optimizado
 
 ## 🤝 Contribuir
 
