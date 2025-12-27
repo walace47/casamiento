@@ -51,12 +51,13 @@
 }
 
 .hero-content h2 {
-    font-family: 'Optima', 'Optima-Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
     color: #000000;
 }
 
 .hero-content p {
+    font-family: 'Libre Baskerville', serif;
     color: #000000;
 }
 
@@ -101,6 +102,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .detail-card:hover {
@@ -113,12 +115,14 @@
 }
 
 .detail-card h5 {
+    font-family: 'Montserrat', sans-serif;
     color: #333;
     margin-bottom: 15px;
     font-weight: 600;
 }
 
 .detail-card p {
+    font-family: 'Montserrat', sans-serif;
     color: #666;
     line-height: 1.6;
     margin: 0;
@@ -192,6 +196,7 @@
 }
 
 .location-card small {
+    font-family: 'Montserrat', sans-serif;
     display: block;
     margin-top: 10px;
     font-size: 0.85rem;
@@ -354,29 +359,32 @@
 
 .carousel-indicators button.active {
     background-color: #6D8879;
-    border-color: #6D8879;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    width: 50px;
-    height: 50px;
-    background: rgba(109, 136, 121, 0.8);
+    width: 40px;
+    height: 40px;
+    background: rgba(109, 136, 121, 0.7);
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
-    margin: 0 20px;
+    margin: 0 15px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
 }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    background: rgba(109, 136, 121, 1);
+    background: rgba(109, 136, 121, 0.9);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    width: 25px;
-    height: 25px;
+    width: 18px;
+    height: 18px;
 }
 
 /* Responsive para carousel */
@@ -402,9 +410,16 @@
 
     .carousel-control-prev,
     .carousel-control-next {
-        width: 40px;
-        height: 40px;
-        margin: 0 10px;
+        width: 32px;
+        height: 32px;
+        margin: 0 8px;
+        opacity: 0.7;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 14px;
+        height: 14px;
     }
 }
 
