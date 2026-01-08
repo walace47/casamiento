@@ -71,6 +71,10 @@
     color: #000000;
 }
 
+.date-info p {
+    font-family: 'Montserrat', sans-serif;
+}
+
 /* Countdown Section - Contador con fondo verde */
 .countdown-section {
     background: linear-gradient(135deg, #a8c4b0 0%, #6D8879 100%);
