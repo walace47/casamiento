@@ -573,6 +573,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (musicBtn && backgroundMusic) {
         let isPlaying = false;
 
+        // Intentar reproducir automáticamente al cargar la página
+        const tryAutoPlay = () => {
+            backgroundMusic.play().then(() => {
+                musicBtn.classList.add('playing');
+                musicBtn.setAttribute('aria-label', 'Pausar música');
+                isPlaying = true;
+            }).catch(error => {
+                console.log('No se pudo reproducir automáticamente (requiere interacción del usuario):', error);
+                // Si falla, el usuario tendrá que hacer clic en el botón
+            });
+        };
+
+        // Intentar reproducir después de un pequeño delay para asegurar que todo esté cargado
+        setTimeout(tryAutoPlay, 500);
+
         musicBtn.addEventListener('click', function () {
             if (isPlaying) {
                 backgroundMusic.pause();
