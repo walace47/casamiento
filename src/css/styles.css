@@ -902,6 +902,21 @@ html {
     line-height: 1.6;
 }
 
+/* Adult Event Notice Section */
+.adult-event-section {
+    background: linear-gradient(135deg, #a8c4b0 0%, #6D8879 100%);
+    color: #ffffff;
+}
+
+.adult-event-section p {
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.adult-event-section strong {
+    font-weight: 600;
+}
+
 /* Photo 8 Section */
 .photo8-section {
     background: #f8f9fa;
