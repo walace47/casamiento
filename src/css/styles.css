@@ -281,6 +281,10 @@
     position: relative;
 }
 
+.photos-section h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
 .photos-section::before {
     position: absolute;
     top: 20px;
