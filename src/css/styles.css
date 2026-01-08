@@ -1023,6 +1023,36 @@ html {
     }
 }
 
+/* Music Player Toast */
+.music-toast {
+    position: fixed;
+    top: 20px;
+    right: 90px;
+    background: linear-gradient(135deg, #a8c4b0 0%, #6D8879 100%);
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(109, 136, 121, 0.4);
+    z-index: 1001;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.music-toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.music-toast i {
+    margin-right: 8px;
+}
+
 /* Responsive para Music Player */
 @media (max-width: 768px) {
     .music-player-btn {
@@ -1031,5 +1061,14 @@ html {
         font-size: 20px;
         top: 15px;
         right: 15px;
+    }
+
+    .music-toast {
+        top: 15px;
+        right: 70px;
+        font-size: 12px;
+        padding: 10px 15px;
+        white-space: normal;
+        max-width: 150px;
     }
 }

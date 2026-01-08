@@ -572,6 +572,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (musicBtn && backgroundMusic) {
         let isPlaying = false;
+        let toastTimeout = null;
+
+        // Función para mostrar el toast
+        const showMusicToast = () => {
+            // Eliminar toast existente si hay uno
+            const existingToast = document.querySelector('.music-toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            // Crear el toast
+            const toast = document.createElement('div');
+            toast.className = 'music-toast';
+            toast.innerHTML = '<i class="fas fa-music"></i>Apretá para reproducir música';
+            document.body.appendChild(toast);
+
+            // Mostrar el toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+
+            // Ocultar y eliminar después de 3 segundos
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
+            }
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        };
+
+        // Función para ocultar el toast
+        const hideMusicToast = () => {
+            const toast = document.querySelector('.music-toast');
+            if (toast) {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
+                toastTimeout = null;
+            }
+        };
 
         // Intentar reproducir automáticamente al cargar la página
         const tryAutoPlay = () => {
@@ -581,7 +628,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 isPlaying = true;
             }).catch(error => {
                 console.log('No se pudo reproducir automáticamente (requiere interacción del usuario):', error);
-                // Si falla, el usuario tendrá que hacer clic en el botón
+                // Mostrar toast si no se pudo reproducir automáticamente
+                showMusicToast();
             });
         };
 
@@ -597,6 +645,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     musicBtn.classList.add('playing');
                     musicBtn.setAttribute('aria-label', 'Pausar música');
                     isPlaying = true;
+                    hideMusicToast(); // Ocultar toast cuando se reproduce
                 }).catch(error => {
                     console.log('Error al reproducir música al interactuar:', error);
                     musicStartedByTouch = false; // Permitir intentar de nuevo
@@ -627,6 +676,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     musicBtn.classList.add('playing');
                     musicBtn.setAttribute('aria-label', 'Pausar música');
                     isPlaying = true;
+                    hideMusicToast(); // Ocultar toast cuando se reproduce
                 }).catch(error => {
                     console.log('Error al reproducir música:', error);
                     // Si hay un error (por ejemplo, el archivo no existe), no hacer nada
