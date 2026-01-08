@@ -588,6 +588,34 @@ document.addEventListener('DOMContentLoaded', function () {
         // Intentar reproducir después de un pequeño delay para asegurar que todo esté cargado
         setTimeout(tryAutoPlay, 500);
 
+        // Reproducir música cuando el usuario toque la pantalla o haga scroll (para móviles)
+        let musicStartedByTouch = false;
+        const startMusicOnInteraction = () => {
+            if (!isPlaying && !musicStartedByTouch) {
+                musicStartedByTouch = true;
+                backgroundMusic.play().then(() => {
+                    musicBtn.classList.add('playing');
+                    musicBtn.setAttribute('aria-label', 'Pausar música');
+                    isPlaying = true;
+                }).catch(error => {
+                    console.log('Error al reproducir música al interactuar:', error);
+                    musicStartedByTouch = false; // Permitir intentar de nuevo
+                });
+            }
+        };
+
+        // Eventos de touch para móviles (solo una vez)
+        document.addEventListener('touchstart', startMusicOnInteraction, { once: true, passive: true });
+        document.addEventListener('touchend', startMusicOnInteraction, { once: true, passive: true });
+        // También escuchar scroll en móviles
+        let scrollAttempted = false;
+        document.addEventListener('scroll', () => {
+            if (!scrollAttempted) {
+                scrollAttempted = true;
+                startMusicOnInteraction();
+            }
+        }, { passive: true });
+
         musicBtn.addEventListener('click', function () {
             if (isPlaying) {
                 backgroundMusic.pause();
