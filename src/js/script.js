@@ -564,3 +564,41 @@ function shareWedding() {
         window.open(shareUrl, '_blank');
     }
 }
+
+// Music Player Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const musicBtn = document.getElementById('musicPlayerBtn');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+
+    if (musicBtn && backgroundMusic) {
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', function () {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.setAttribute('aria-label', 'Reproducir música');
+                isPlaying = false;
+            } else {
+                backgroundMusic.play().then(() => {
+                    musicBtn.classList.add('playing');
+                    musicBtn.setAttribute('aria-label', 'Pausar música');
+                    isPlaying = true;
+                }).catch(error => {
+                    console.log('Error al reproducir música:', error);
+                    // Si hay un error (por ejemplo, el archivo no existe), no hacer nada
+                });
+            }
+        });
+
+        // Pausar música cuando la página pierde el foco (opcional)
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden && isPlaying) {
+                backgroundMusic.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.setAttribute('aria-label', 'Reproducir música');
+                isPlaying = false;
+            }
+        });
+    }
+});
